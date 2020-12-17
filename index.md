@@ -1,12 +1,12 @@
 ## OpenGL® ES 2.0 参考文档
->我写这份文档的翻译是因为在我学习OpenGL ES 2.0的过程中，针对对于诸多android.opengl.GLES20.xxx 静态常量及方法的含义及作用感到迷惑。而在互联网中又搜索不到全面且可信的相关中文翻译，所以才有了这个项目的存在。在翻译中，我会尽量的在学习相关的接口后，结合[原文](https://www.khronos.org/registry/OpenGL-Refpages/es2.0/)对这些api doc信息(包括参数、返回值、错误条件和相关命令的描述)尽量通俗易懂的进行翻译。  <div style="text-align: right"> ——写在前面 </div>
+>我写这份文档的翻译是因为在我学习OpenGL ES 2.0的过程中，针对对于诸多android.opengl.GLES20.xxx 静态常量及方法的含义及作用感到迷惑。而在互联网中又搜索不到全面且可信的相关中文翻译，所以才有了这个项目的存在。在翻译中，我会尽量的在学习相关的接口后，结合[原文](https://www.khronos.org/registry/OpenGL-Refpages/es2.0/)对这些api doc信息(包括参数、返回值、错误条件和相关命令的描述)尽量通俗易懂的进行翻译。  
 
 
 ## 方法快查表：
 
 |  C  | V |
 | --- | ---|
-| [glClear] | [glViewport] |
+| [glClear](C) | [glViewport] |
 | [glCreateShader] | more... |
 
 
@@ -18,48 +18,48 @@
 
 ### glClear
 
-#### Name
+#### 名称
 
-glClear — clear buffers to preset values
+glClear — 将缓冲区清除为预设值
 
-#### C Specification
+#### C 规范
 
 void glClear(	GLbitfield mask);
  
-#### Parameters
+#### 参数
 
 `mask`  
-Bitwise OR of masks that indicate the buffers to be cleared. The three masks are GL_COLOR_BUFFER_BIT, GL_DEPTH_BUFFER_BIT, and GL_STENCIL_BUFFER_BIT.
+指示要清除的缓冲区的掩码，从而进行按位或操作。这三个掩码是GL_COLOR_BUFFER_BIT，GL_DEPTH_BUFFER_BIT和GL_STENCIL_BUFFER_BIT。
 
-#### Description  
-glClear sets the bitplane area of the window to values previously selected by glClearColor, glClearDepthf, and glClearStencil.
+#### 描述  
+`glClear` 将窗口的位面区域设置为之前由 glClearColor、glClearDepthf 和 glClearStencil 选择的值。
 
-The pixel ownership test, the scissor test, dithering, and the buffer writemasks affect the operation of glClear. The scissor box bounds the cleared region. Blend function, stenciling, fragment shading, and depth-buffering are ignored by glClear.
+像素所有权测试、剪刀测试、抖动和缓冲区写入掩码会影响glClear的操作。剪刀盒会对被清除的区域进行约束。glClear会忽略混合功能、模板、碎片着色和深度缓冲。
 
-glClear takes a single argument that is the bitwise OR of several values indicating which buffer is to be cleared.
+`glClear` 取一个单一的参数，是几个值的位数OR，表示要清除哪个缓冲区。
 
-The values are as follows:
+缓冲区的掩码分别为:
 
 `GL_COLOR_BUFFER_BIT`  
-Indicates the buffers currently enabled for color writing.
+表示当前启用的颜色写入缓冲区。
 
 `GL_DEPTH_BUFFER_BIT`  
-Indicates the depth buffer.
+表示深度缓冲区。
 
 `GL_STENCIL_BUFFER_BIT`  
-Indicates the stencil buffer.
+表示钢网缓冲区。
 
-The value to which each buffer is cleared depends on the setting of the clear value for that buffer.
+每个缓冲区的清除值取决于该缓冲区分别由`glClearColor`、`glClearDepthf` 和 `glClearStencil` 方法设置的值。
 
 #### Notes
-If a buffer is not present, then a glClear directed at that buffer has no effect.
+如果一个缓冲区不存在，那么针对该缓冲区的glClear就没有效果。
 
 #### Errors
-GL_INVALID_VALUE is generated if any bit other than the three defined bits is set in mask.
+如果在掩码中设置了三个定义位以外的任何位，就会产生`GL_INVALID_VALUE`。
 
 #### Associated Gets
-glGet with argument GL_DEPTH_CLEAR_VALUE
+glGet with argument `GL_DEPTH_CLEAR_VALUE`
 
-glGet with argument GL_COLOR_CLEAR_VALUE
+glGet with argument `GL_COLOR_CLEAR_VALUE`
 
-glGet with argument GL_STENCIL_CLEAR_VALUE
+glGet with argument `GL_STENCIL_CLEAR_VALUE`
