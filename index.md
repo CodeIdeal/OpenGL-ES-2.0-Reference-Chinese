@@ -4,9 +4,9 @@
 
 ## 方法快查表：
 
-|  C  | V |
+|  [C](#C)  | V |
 | --- | ---|
-| [glClear](C) | [glViewport] |
+| [glClear](#glclear) | [glViewport] |
 | [glCreateShader] | more... |
 
 
